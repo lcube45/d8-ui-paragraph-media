@@ -1,0 +1,19 @@
+uuid: bf556bef-32b9-4e65-b743-e9e56a96723d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titre
+    - paragraphs.paragraphs_type.jumbotron
+id: paragraph.jumbotron.field_titre
+field_name: field_titre
+entity_type: paragraph
+bundle: jumbotron
+label: Titre
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

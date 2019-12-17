@@ -1,0 +1,14 @@
+uuid: f74cc180-7a36-4aab-a15c-022c506bd2da
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: jumbotron
+label: Jumbotron
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

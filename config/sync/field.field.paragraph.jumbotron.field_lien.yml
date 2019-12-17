@@ -1,0 +1,23 @@
+uuid: aaf88889-5c5e-46b4-b533-0d678dc3d65d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lien
+    - paragraphs.paragraphs_type.jumbotron
+  module:
+    - link
+id: paragraph.jumbotron.field_lien
+field_name: field_lien
+entity_type: paragraph
+bundle: jumbotron
+label: Lien
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

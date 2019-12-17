@@ -1,18 +1,21 @@
-uuid: 60892b7b-889f-4c34-97c0-674e584bd418
+uuid: 2fe6e44c-965b-4c9b-a243-859d5b4415c0
 langcode: fr
 status: true
 dependencies:
   module:
+    - entity_usage
+    - paragraphs
+    - paragraphs_library
     - user
 _core:
-  default_config_hash: J5EbGNdz0YUaSIYKwomyFSOtZjsV9TrBA3qdb3ZwBS0
-id: user_admin_people
-label: Personnes
-module: user
-description: 'Trouver et gérer les personnes interagissant avec votre site.'
-tag: default
-base_table: users_field_data
-base_field: uid
+  default_config_hash: 67G2lyvlXJE8P8b1oAheELEdM5i74aipXfDIZCpAsdQ
+id: paragraphs_library
+label: 'Paragraphs library'
+module: views
+description: ''
+tag: ''
+base_table: paragraphs_library_item_field_data
+base_field: id
 display:
   default:
     display_plugin: default
@@ -23,9 +26,10 @@ display:
       access:
         type: perm
         options:
-          perm: 'administer users'
+          perm: 'administer paragraphs library'
       cache:
         type: tag
+        options: {  }
       query:
         type: views_query
         options:
@@ -38,24 +42,22 @@ display:
         type: basic
         options:
           submit_button: Filter
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: full
+        type: mini
         options:
           items_per_page: 50
           offset: 0
           id: 0
-          total_pages: 0
+          total_pages: null
           tags:
-            previous: '‹ Précédent'
-            next: 'Suivant ›'
-            first: '« Premier'
-            last: 'Dernier »'
+            previous: ‹‹
+            next: ››
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -64,7 +66,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
       style:
         type: table
         options:
@@ -73,82 +74,62 @@ display:
           default_row_class: true
           override: true
           sticky: false
+          caption: ''
           summary: ''
+          description: ''
           columns:
-            user_bulk_form: user_bulk_form
-            name: name
-            status: status
-            rid: rid
-            created: created
-            access: access
-            edit_node: edit_node
-            dropbutton: dropbutton
+            label: label
+            type: type
+            id: id
+            count: count
+            operations: operations
           info:
-            user_bulk_form:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            name:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            status:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            rid:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            created:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            access:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            edit_node:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            dropbutton:
+            label:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-          default: created
+            type:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            count:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-right
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
           empty_table: true
       row:
         type: fields
       fields:
-        user_bulk_form:
-          id: user_bulk_form
-          table: users
-          field: user_bulk_form
+        label:
+          id: label
+          table: paragraphs_library_item_field_data
+          field: label
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Mise à jour en masse'
+          label: Label
           exclude: false
           alter:
             alter_text: false
@@ -189,175 +170,31 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: user_bulk_form
-          entity_type: user
-        name:
-          id: name
-          table: users_field_data
-          field: name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Nom d''utilisateur'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          plugin_id: field
-          type: user_name
-          entity_type: user
-          entity_field: name
-        status:
-          id: status
-          table: users_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: État
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          plugin_id: field
-          type: boolean
+          click_sort_column: value
+          type: string
           settings:
-            format: custom
-            format_custom_true: Actif
-            format_custom_false: Bloqué
-          entity_type: user
-          entity_field: status
-        roles_target_id:
-          id: roles_target_id
-          table: user__roles
-          field: roles_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Rôles
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          type: ul
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
           separator: ', '
-          plugin_id: user_roles
-        created:
-          id: created
-          table: users_field_data
-          field: created
-          relationship: none
+          field_api_classes: false
+          entity_type: paragraphs_library_item
+          entity_field: label
+          plugin_id: field
+        type:
+          id: type
+          table: paragraphs_item_field_data
+          field: type
+          relationship: paragraphs__target_id
           group_type: group
           admin_label: ''
-          label: 'Membre depuis'
+          label: Type
           exclude: false
           alter:
             alter_text: false
@@ -398,22 +235,31 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          type: timestamp_ago
+          click_sort_column: target_id
+          type: entity_reference_label
           settings:
-            future_format: '@interval'
-            past_format: '@interval'
-            granularity: 2
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: paragraph
+          entity_field: type
           plugin_id: field
-          entity_type: user
-          entity_field: created
-        access:
-          id: access
-          table: users_field_data
-          field: access
+        paragraphs__target_id:
+          id: paragraphs__target_id
+          table: paragraphs_library_item_field_data
+          field: paragraphs__target_id
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Dernier accès'
+          label: Paragraphs
           exclude: false
           alter:
             alter_text: false
@@ -454,17 +300,283 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          type: timestamp_ago
-          settings:
-            future_format: '@interval hence'
-            past_format: '@interval ago'
-            granularity: 2
+          click_sort_column: target_id
+          type: paragraph_summary
+          settings: {  }
+          group_column: entity_id
+          group_columns:
+            target_id: target_id
+            target_revision_id: target_revision_id
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: paragraphs_library_item
+          entity_field: paragraphs
           plugin_id: field
-          entity_type: user
-          entity_field: access
+        langcode:
+          id: langcode
+          table: paragraphs_library_item_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Language
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: language
+          settings:
+            link_to_entity: false
+            native_language: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: paragraphs_library_item
+          entity_field: langcode
+          plugin_id: field
+        id:
+          id: id
+          table: paragraphs_library_item_field_data
+          field: id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ID
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: entity_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: paragraphs_library_item
+          entity_field: id
+          plugin_id: field
+        count:
+          id: count
+          table: entity_usage
+          field: count
+          relationship: paragraphs_library_item_to_usage_entity
+          group_type: count
+          admin_label: ''
+          label: Used
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: 'admin/content/entity-usage/paragraphs_library_item/{{ id }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          set_precision: false
+          precision: 0
+          decimal: .
+          separator: ','
+          format_plural: false
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
+          prefix: ''
+          suffix: ''
+          plugin_id: numeric
+        changed:
+          id: changed
+          table: paragraphs_library_item_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Changed
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: short
+            custom_date_format: ''
+            timezone: ''
+          group_column: entity_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: paragraphs_library_item
+          entity_field: changed
+          plugin_id: field
         operations:
           id: operations
-          table: users
+          table: paragraphs_library_item
           field: operations
           relationship: none
           group_type: group
@@ -511,77 +623,13 @@ display:
           empty_zero: false
           hide_alter_empty: true
           destination: true
-          entity_type: user
+          entity_type: paragraphs_library_item
           plugin_id: entity_operations
-        mail:
-          id: mail
-          table: users_field_data
-          field: mail
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: basic_string
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-          entity_type: user
-          entity_field: mail
       filters:
-        combine:
-          id: combine
-          table: views
-          field: combine
+        label:
+          id: label
+          table: paragraphs_library_item_field_data
+          field: label
           relationship: none
           group_type: group
           admin_label: ''
@@ -590,12 +638,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: combine_op
-            label: 'Nom ou courriel contenant'
+            operator_id: label_op
+            label: Label
             description: ''
             use_operator: false
-            operator: combine_op
-            identifier: user
+            operator: label_op
+            identifier: label
             required: false
             remember: false
             multiple: false
@@ -607,52 +655,9 @@ display:
             operator_list: {  }
           is_grouped: false
           group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          fields:
-            name: name
-            mail: mail
-          plugin_id: combine
-        status:
-          id: status
-          table: users_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: status_op
-            identifier: status
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: true
-          group_info:
-            label: État
-            description: ''
-            identifier: status
+            label: Label
+            description: null
+            identifier: label
             optional: true
             widget: select
             multiple: false
@@ -660,35 +665,30 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items:
-              1:
-                title: Actif
-                operator: '='
-                value: '1'
-              2:
-                title: Bloqué
-                operator: '='
-                value: '0'
-          plugin_id: boolean
-          entity_type: user
-          entity_field: status
-        roles_target_id:
-          id: roles_target_id
-          table: user__roles
-          field: roles_target_id
-          relationship: none
+              1: {  }
+              2: {  }
+              3: {  }
+          entity_type: paragraphs_library_item
+          entity_field: label
+          plugin_id: string
+        type:
+          id: type
+          table: paragraphs_item_field_data
+          field: type
+          relationship: paragraphs__target_id
           group_type: group
           admin_label: ''
-          operator: or
+          operator: in
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: roles_target_id_op
-            label: Rôle
+            operator_id: type_op
+            label: Type
             description: ''
             use_operator: false
-            operator: roles_target_id_op
-            identifier: role
+            operator: type_op
+            identifier: type
             required: false
             remember: false
             multiple: false
@@ -711,53 +711,12 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          plugin_id: user_roles
-        permission:
-          id: permission
-          table: user__roles
-          field: permission
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: permission_op
-            label: Droit
-            description: ''
-            use_operator: false
-            operator: permission_op
-            identifier: permission
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          plugin_id: user_permissions
+          entity_type: paragraph
+          entity_field: type
+          plugin_id: bundle
         default_langcode:
           id: default_langcode
-          table: users_field_data
+          table: paragraphs_library_item_field_data
           field: default_langcode
           relationship: none
           group_type: group
@@ -792,25 +751,22 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: user
+          entity_type: paragraphs_library_item
           entity_field: default_langcode
           plugin_id: boolean
-        uid_raw:
-          id: uid_raw
-          table: users_field_data
-          field: uid_raw
-          relationship: none
+        default_langcode_1:
+          id: default_langcode_1
+          table: paragraphs_item_field_data
+          field: default_langcode
+          relationship: paragraphs__target_id
           group_type: group
           admin_label: ''
-          operator: '!='
-          value:
-            min: ''
-            max: ''
-            value: '0'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
-            operator_id: '0'
+            operator_id: ''
             label: ''
             description: ''
             use_operator: false
@@ -835,25 +791,13 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: numeric
-          entity_type: user
-      sorts:
-        created:
-          id: created
-          table: users_field_data
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-          plugin_id: date
-          entity_type: user
-          entity_field: created
-      title: Personnes
+          entity_type: paragraph
+          entity_field: default_langcode
+          plugin_id: boolean
+      sorts: {  }
+      title: 'Paragraphs library'
+      header: {  }
+      footer: {  }
       empty:
         area_text_custom:
           id: area_text_custom
@@ -864,32 +808,45 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'Personne n''est disponible.'
+          content: 'No library items available.'
           plugin_id: text_custom
-      use_more: false
-      use_more_always: false
-      use_more_text: plus
-      display_comment: ''
-      use_ajax: false
-      hide_attachment_summary: false
-      show_admin_links: true
-      group_by: false
-      link_url: ''
-      link_display: page_1
-      css_class: ''
+      relationships:
+        paragraphs__target_id:
+          id: paragraphs__target_id
+          table: paragraphs_library_item_field_data
+          field: paragraphs__target_id
+          relationship: none
+          group_type: group
+          admin_label: Paragraphs
+          required: true
+          entity_type: paragraphs_library_item
+          entity_field: paragraphs
+          plugin_id: standard
+        paragraphs_library_item_to_usage_entity:
+          id: paragraphs_library_item_to_usage_entity
+          table: paragraphs_library_item
+          field: paragraphs_library_item_to_usage_entity
+          relationship: none
+          group_type: group
+          admin_label: 'Usage information (Paragraphs library item)'
+          required: false
+          entity_type: paragraphs_library_item
+          plugin_id: standard
+      arguments: {  }
+      display_extenders: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
-      display_extenders: {  }
+      group_by: true
     cache_metadata:
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - user.permissions
-      max-age: 0
       tags: {  }
   page_1:
     display_plugin: page
@@ -897,30 +854,14 @@ display:
     display_title: Page
     position: 1
     display_options:
-      path: admin/people/list
-      show_admin_links: false
-      menu:
-        type: 'default tab'
-        title: Lister
-        description: 'Trouver et gérer les personnes interagissant avec votre site.'
-        menu_name: admin
-        weight: -10
-        context: ''
-      tab_options:
-        type: normal
-        title: Personnes
-        description: 'Gérer les comptes utilisateurs, les rôles et les droits.'
-        menu_name: admin
-        weight: 0
-      defaults:
-        show_admin_links: false
       display_extenders: {  }
+      path: admin/content/paragraphs
     cache_metadata:
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - user.permissions
-      max-age: 0
       tags: {  }

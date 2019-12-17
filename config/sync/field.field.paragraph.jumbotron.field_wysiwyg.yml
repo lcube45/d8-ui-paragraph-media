@@ -1,0 +1,21 @@
+uuid: 1a8ecb77-882c-466c-ba15-eb851195e7cf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wysiwyg
+    - paragraphs.paragraphs_type.jumbotron
+  module:
+    - text
+id: paragraph.jumbotron.field_wysiwyg
+field_name: field_wysiwyg
+entity_type: paragraph
+bundle: jumbotron
+label: Wysiwyg
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
