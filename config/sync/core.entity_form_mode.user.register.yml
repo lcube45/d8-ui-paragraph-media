@@ -1,0 +1,12 @@
+uuid: 97a4a5a0-b797-4c7a-b7cb-d2fa6a0228e8
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: flXhTcp55yLcyy7ZLOhPGKGZobZQJdkAFVWV3LseiuI
+id: user.register
+label: 'S''inscrire'
+targetEntityType: user
+cache: true

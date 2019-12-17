@@ -1,0 +1,10 @@
+uuid: 0e5243e3-6bbe-4c5c-a4b6-a9339524ea4b
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: zglzjmYxi0G0ag9MZ02y0LSJOdpWRwJxyP_OvFojFyo
+id: basic
+label: 'Bloc simple'
+revision: 0
+description: 'Un bloc simple contient un titre et un corps.'
